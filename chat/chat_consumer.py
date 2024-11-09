@@ -1,4 +1,4 @@
-from comms.consumer import Consumer
+from comms.consumer.consumer import Consumer
 
 class ChatConsumer(Consumer):
     def __init__(self, consumer_name):

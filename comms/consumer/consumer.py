@@ -1,10 +1,12 @@
 
 import pika
 from abc import ABC, abstractmethod  
-connection_parameters = pika.ConnectionParameters('localhost')
+
+from comms.connection import mqConnection
+
 
 class Consumer(ABC):
-    connection = pika.BlockingConnection(connection_parameters)
+    
 
     def __init__(self, consumer_name):
         self.consumer_name = consumer_name
@@ -23,7 +25,7 @@ class Consumer(ABC):
         self.channel.stop_consuming()
 
     def __setup_channel_and_queue(self, queue_name):
-        self.channel = Consumer.connection.channel()
+        self.channel = mqConnection.channel()
         self.channel.queue_declare(queue_name)
 
     def __listen(self, ch, method, properties, body):
