@@ -1,0 +1,28 @@
+
+docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.9-management
+
+
+#1. [DONE] Create a producer 
+    - producer koji ce preko default exchange da salje na letterbox queue poruke
+
+#2. [DONE] Create a consumer
+    - consumer koji ce preko default exchange da slusa na letterbox queue poruke
+
+#3. [DONE] Create a generic consumer class 
+    - Svaki consumer ce imati svoj poseban queue sa kog ce slusati sebi posebne poruke
+
+
+
+#Consumer rules:
+    - svaki consumer je zapravo chat
+    - svkai consumer je u isto vreme i producer
+    - svaki consumer pri otvaranju svog "chata" imace opciju da komunicira sa drugim consumerom 
+    - svaki consumer moze da ima otvoren chat samo sa jednim drugim consumerom. 
+
+ReplyTo header ce postavljati "queue" drugog saucesnika
+
+Startovanje consumera znaci da ce se ponuditi lista dostupnih consumera. 
+Nedostupni consumeri bice skriveni.
+Svaki consumer bice numerisan tako da tvoje ce biti samo da odaberes sa kojim zelis da komuniciras. 
+Taj consumer ce odgovoriti sa da ili ne. 
+U slucaju da neko posalje u isto vreme zahtev, ici ce prvi da se obradjuje, a svaki sledeci bice automatski odbijen. 
