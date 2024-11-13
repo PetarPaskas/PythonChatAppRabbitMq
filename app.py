@@ -1,5 +1,6 @@
 from prompting.console_interactions import read_client_name, choose_who_to_chat_with
 from repositories.user_repository import add_user, set_user_availability
+from chat.chat_client import ChatClient
 
 def initiate_current_user():
     client_name = read_client_name()
@@ -9,6 +10,7 @@ def initiate_as_publisher():
     current_user_id, current_user_name, current_user_availability  = initiate_current_user()
     target_user_id, target_user_name, target_user_availability  = choose_who_to_chat_with()
     #initiate chat app as publisher 
+    ChatClient.initiate_as_publisher()
     chat = None
     set_user_availability(False, current_user_name, current_user_id)
     return (chat)
