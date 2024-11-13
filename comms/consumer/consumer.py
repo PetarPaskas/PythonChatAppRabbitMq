@@ -7,7 +7,6 @@ from comms.connection import mqConnection
 
 class Consumer(ABC):
     
-
     def __init__(self, consumer_name):
         self.consumer_name = consumer_name
         self.__setup_channel_and_queue(consumer_name)

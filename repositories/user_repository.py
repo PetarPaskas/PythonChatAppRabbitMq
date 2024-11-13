@@ -3,6 +3,9 @@ import uuid
 
 users_file_name = 'users.csv'
 
+def get_available_users():
+    return [user for user in __get_users() if user[2] == True]
+
 def user_exists(user_name, user_id=None): 
     users = __get_users()
     user = __find_user(users, user_name, user_id)
@@ -29,16 +32,19 @@ def __match_by_user_name(target_user_name, user_name):
 
 def add_user(user_name, user_id=None):   
     if not user_exists(user_name, user_id):
-        __add_user()
+        return __add_user()
 
 def __add_user(user_name, user_id=None):
     if user_id == None:
         user_id = uuid.uuid4()
     
+    new_user = (user_id, user_name, True)
+
     users = __get_users()
-    users.append((user_id, user_name, True))
+    users.append(new_user)
 
     __write_to_users(users)
+    return new_user
 
 
 def set_user_availability(available, user_name, user_id=None): 

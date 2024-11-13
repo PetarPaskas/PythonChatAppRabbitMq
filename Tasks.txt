@@ -26,3 +26,50 @@ Nedostupni consumeri bice skriveni.
 Svaki consumer bice numerisan tako da tvoje ce biti samo da odaberes sa kojim zelis da komuniciras. 
 Taj consumer ce odgovoriti sa da ili ne. 
 U slucaju da neko posalje u isto vreme zahtev, ici ce prvi da se obradjuje, a svaki sledeci bice automatski odbijen. 
+
+
+
+
+
+
+
+
+
+
+---------------------------
+Prompting
+---------------------------
+
+1. Unesi svoje ime bez razmaka kako zelis da te pronadju
+
+    1.1 #Provera da li ime postoji
+        - if True: unesi ponovo
+        - if False: upisi u csv
+
+2. Ako je sve okej onda ubaci u csv
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+#establish connection
+#avoid request-reply
+#idemo na 
+
+#set availability oba usera na unavailable 
+#establish a chat connection
+
+E sada, kako cemo da ih povezemo. 
+Imas dva nacina da se prijavis. 
+
+1. Onaj ko ceka da neko s njim prica 
+2. Onaj ko bira s kim ce da prica 
+
+> Onaj ko ceka da neko s njim prica ce kreirati svoj queue, upisace se u listu dostupnih i subscribeovace se na svoj queue. 
+
+> Onaj ko bira s kim ce da prica citace iz csv i trazice ljude za pricanje. 
+
+
+Kako subscribe, kako da ostvare connection?
+1. okaj ko ceka da neko s njim prica dobija na queue event tipa "ChatInit"
+    potom ce se kreirati pusblisher koji salje na queue onog sto je inicirao chat
+
+    chat consumer ima __on_chat_init na koji se subscribeujes publisher. 
